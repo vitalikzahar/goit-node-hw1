@@ -6,8 +6,9 @@ program
   .option("-a, --action <type>", "choose action")
   .option("-l, --action <list>", "list contacts")
   .option("-g, --id <get>", "get contact by id")
-  .option("-d, --name <add>", "add contact")
-  .option("-r, --email <remove>", "remove contact");
+  .option("-d, --name <add>", "user name")
+  .option("-e, --email <remove>", "user email")
+  .option("-p, --phone <remove>", "user phone");
 
 program.parse(process.argv);
 
@@ -21,7 +22,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      const contact = await Contacts.getContactById(Id);
+      const contact = await Contacts.getContactById(id);
       console.log(contact);
       break;
 
